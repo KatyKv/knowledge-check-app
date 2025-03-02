@@ -2,10 +2,37 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Тестирование</title>
+    <title>Тестирование по охране труда</title>
 </head>
 <body>
-    <h1>Тест запуска</h1>
+    <h1>Тестирование по охране труда</h1>
+    <!-- Сообщения flash (если пришли через redirect) -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Сообщение об ошибке (если пришло через render_template) -->
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    <form action="/start-test" method="post">
+        <label for="employee_id">Табельный номер (8 цифр):</label>
+        <input type="text" id="employee_id" name="employee_id" value="{{ employee_id }}" pattern="\d{8}" required title="Введите 8 цифр">
+        <br><br>
+
+        <label for="full_name">ФИО:</label>
+        <input type="text" id="full_name" name="full_name" value="{{ full_name }}" required>
+        <br><br>
+
+        <button type="submit">Приступить</button>
+    </form>
 
 </body>
 </html>
