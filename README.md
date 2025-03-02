@@ -1,16 +1,19 @@
 ## Структура проекта
 ```plaintext
-test_app/                   # Корневая папка проекта
+knowledge-check-app/        # Корневая папка проекта
 │── app/                    # Основное приложение
+│   │── static/             # Статические файлы
 │   │── templates/          # HTML-шаблоны
-│   │── static/             # Статические файлы 
-│   │── routes.py           # Пути Flask
+│   │── __init__.py         # Flask + dotenv
 │   │── excel_handler.py    # Чтение и обработка Excel-файла
-│   │── test_logic.py       # Логика тестирования
 │   │── results.py          # Сохранение результатов
+│   │── routes.py           # Пути Flask
+│   │── test_logic.py       # Логика тестирования
 │── data/                   # Хранилище данных для тестов
 │   │── exam_questions.xlsx  # Файл с вопросами
+├── .env                    # (добавлен в .gitignore)
 ├── .gitignore              # Файл игнорирования Git
+├── config.py               # Лицензия проекта
 ├── LICENSE                 # Лицензия проекта
 │── main.py                 # Точка входа, запуск Flask
 ├── README.md               # Описание проекта
